@@ -43,11 +43,16 @@ jobs:
            sudo apt update && \
            sudo apt install -y dotnet-sdk-3.1 fdroidserver
      
-    - name: Build Osu!laser
+    - name: Checkout git Osu!Laser
       uses: actions/checkout@v2
       with:
         repository: 'ppy/osu'
         ref: 'refs/tags/${{ steps.nrelease.outputs.release }}'
         path: '$GITHUB_WORKSPACE/osu/'
-        run: |
-             echo "We are so far !"
+        
+    - name: Build Osu!Laser
+      env:
+        version: ${{ steps.nrelease.outputs.release }}
+      run: |
+           python3 amhack.py
+           dotnet build $GITHUB_WORKSPACE/osu/osu.Android/ -c "Release"
