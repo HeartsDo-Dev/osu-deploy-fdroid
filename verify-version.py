@@ -3,7 +3,7 @@ import os, sys
 
 lv = config.lastversion
 
-if os.getenv("lv") != lastversion:
+if os.getenv("lv") != lv:
     config.lastversion = os.getenv("lv")
     sys.exit(0)
 else:
