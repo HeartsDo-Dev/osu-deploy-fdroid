@@ -48,7 +48,7 @@ jobs:
       with:
         repository: 'ppy/osu'
         ref: 'refs/tags/${{ steps.nrelease.outputs.release }}'
-        path: '$GITHUB_WORKSPACE/osu/'
+        path: 'osu/'
         
     - name: Build Osu!Laser
       env:
