@@ -32,7 +32,7 @@ jobs:
         lv: ${{ steps.nrelease.outputs.release }}
       run: |
            sudo apt install -y python3
-           python3 verify.py
+           python3 verify-version.py
            
     - name: Download package for build and deploy
       run: |
