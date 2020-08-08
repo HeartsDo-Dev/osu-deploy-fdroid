@@ -29,7 +29,13 @@ jobs:
         repository: 'ppy/osu'
 
     # Runs a set of commands using the runners shell
-    - name: Print out
+    - name: Download package for build and deploy
       run: |
-        echo ${{ steps.nrelease.outputs.release }}
-        echo Done
+           wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+           dpkg -i packages-microsoft-prod.deb
+           sudo apt update; \
+           sudo apt install -y apt-transport-https && \
+           sudo apt update && \
+           sudo apt install -y dotnet-sdk-3.1 python3 fdroidserver
+           echo "Done"
+
