@@ -25,10 +25,10 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Get the last tag
-      uses: WyriHaximus/github-action-get-previous-tag@0.2.0
+      uses: dawidd6/action-get-tag@v1
 
     # Runs a set of commands using the runners shell
     - name: Print out
       run: |
-        echo $tag
+        echo ${{steps.tag.outputs.tag}}
         echo Done
