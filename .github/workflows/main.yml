@@ -23,12 +23,13 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Get the last tag
-      uses: actions-hub/watch-tag@v0.0.3
+      id: nrelease
+      uses: pozetroninc/github-action-get-latest-release@v0.4.0      
       with:
         repository: 'ppy/osu'
 
     # Runs a set of commands using the runners shell
     - name: Print out
       run: |
-        echo $WT_LATEST
+        echo ${{ steps.nrelease.outputs.release }}
         echo Done
