@@ -44,7 +44,8 @@ jobs:
            sudo apt install -y dotnet-sdk-3.1 fdroidserver
            wget https://artprodcus3.artifacts.visualstudio.com/Ad0adf05a-e7d7-4b65-96fe-3f3884d42038/6fd3d886-57a5-4e31-8db7-52a1b47c07a8/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL3hhbWFyaW4vcHJvamVjdElkLzZmZDNkODg2LTU3YTUtNGUzMS04ZGI3LTUyYTFiNDdjMDdhOC9idWlsZElkLzIzNzQ3L2FydGlmYWN0TmFtZS9MaW51eCtQYWNrYWdlcw2/content?format=zip -O "Linux Packages.zip"
            unzip "Linux Packages.zip"
-           cd Linux Packages && sudo dpkg -i xamarin.android-oss_11.1.99.0_amd64.deb
+           cd Linux Packages 
+           sudo dpkg -i xamarin.android-oss_11.1.99.0_amd64.deb
      
     - name: Checkout git Osu!Laser
       uses: actions/checkout@v2
