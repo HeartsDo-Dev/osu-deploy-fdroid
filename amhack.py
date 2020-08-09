@@ -10,7 +10,7 @@ tree = ET.parse( path + '/osu/osu.Android/Properties/AndroidManifest.xml' )
 root = tree.getroot()
 
 for elem in root.iter('manifest'):
-    elem.set('versionName', str(version))
+    elem.set('android:versionName', str(version))
 
 tree.write(path + '/osu/osu.Android/Properties/AndroidManifest.xml')
 sys.exit(0)
