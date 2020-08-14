@@ -5,7 +5,7 @@ version = os.getenv("version")
 path = os.getenv("GITHUB_WORKSPACE")
 
 with open(path + "/osu/apktool.yml") as f:
-     filechange = yaml.load(f)
+     filechange = yaml.load(f, Loader=yaml.FullLoader)
 
 filechange["versionInfo"]["versionName"] = version
 
