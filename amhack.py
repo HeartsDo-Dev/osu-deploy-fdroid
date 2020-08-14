@@ -5,12 +5,11 @@ import xml.etree.ElementTree as ET
 version = os.getenv("version")
 path = os.getenv("GITHUB_WORKSPACE")
 
-tree = ET.parse( path + '/osu/osu.Android/Properties/AndroidManifest.xml' )
+with open(path + "/osu/apktool.yml") as f:
+     filechange = yaml.load(f)
 
-root = tree.getroot()
+filechange["versionInfo"]["versionName"] = version
 
-for elem in root.iter('manifest'):
-    elem.set('android:versionName', str(version))
-
-tree.write(path + '/osu/osu.Android/Properties/AndroidManifest.xml')
+with open(path + "/osu/apktool.yml", "w") as f:
+    yaml.dump(filechange, f)        
 sys.exit(0)
