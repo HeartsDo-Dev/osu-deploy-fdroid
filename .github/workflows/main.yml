@@ -30,13 +30,10 @@ jobs:
     - name: Verify number version
       env:
         lv: ${{ steps.nrelease.outputs.release }}
-      run: |
-           sudo apt install -y python3
-           python3 verify-version.py
+      run: python3 verify-version.py
            
     - name: Download osu!laser apk
-      run: |
-           wget https://github.com/ppy/osu/releases/download/${{ steps.nrelease.outputs.release }}/sh.ppy.osulazer.apk
+      run: wget https://github.com/ppy/osu/releases/download/${{ steps.nrelease.outputs.release }}/sh.ppy.osulazer.apk
         
     - name: Repackage osu!laser for change the version name
       env:
