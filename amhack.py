@@ -1,6 +1,5 @@
 import os, sys
-import xml.etree.ElementTree as ET
-
+import yaml
 
 version = os.getenv("version")
 path = os.getenv("GITHUB_WORKSPACE")
