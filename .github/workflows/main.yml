@@ -47,9 +47,9 @@ jobs:
       env:
         lv: ${{ steps.nrelease.outputs.release }}
       run: |
-           ./apktool.jar d sh.ppy.osulazer.apk -o "./osu/"
+           ./apktool.jar d sh.ppy.osulazer.apk -o "osu/"
            python3 amhack.py
-           ./apktool.jar build "./osu/"
+           ./apktool.jar build "osu/"
            ls
            
     - name: Prepare deploy
@@ -61,8 +61,8 @@ jobs:
     
     - name: Deploy app
       run: |
-           mkdir "./deploy/unsigned/"
-           mv "./osu/dist/osu.apk" "./deploy/unsigned/sh.ppy.osulazer.apk"
+           mkdir "deploy/unsigned/"
+           mv "osu/dist/osu.apk" "deploy/unsigned/sh.ppy.osulazer.apk"
            cd deploy && fdroid publish --verbose && fdroid update --verbose && fdroid server update --verbose
         
         
