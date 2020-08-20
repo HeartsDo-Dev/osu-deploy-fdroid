@@ -38,7 +38,8 @@ jobs:
     - name: Download package for recompile and deploy
       run: |
            sudo apt-get install apktool fdroidserver
-           pip install -U PyYAML wheel
+           pip install -U wheel
+           pip install -U PyYAML
         
     - name: Repackage osu!laser for change the version name
       env:
