@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Test
+name: Deploy osu!
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -12,9 +12,9 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  work:
+  recompile-and-deploy:
     # The type of runner that the job will run on
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -34,6 +34,9 @@ jobs:
            
     - name: Download osu!laser apk
       run: wget https://github.com/ppy/osu/releases/download/${{ steps.nrelease.outputs.release }}/sh.ppy.osulazer.apk
+    
+    - name: Download package for recompile and deploy
+      run: sudo apt-get install android-apktools fdroidserver
         
     - name: Repackage osu!laser for change the version name
       env:
@@ -42,3 +45,4 @@ jobs:
            apktool d sh.ppy.osulazer.apk -o "./osu/"
            python3 amhack.py
            apktool build "./osu/"
+           ls
