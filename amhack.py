@@ -11,7 +11,7 @@ def meta_constructor(loader, node):
 yaml.add_constructor(u'tag:yaml.org,2002:brut.androlib.meta.MetaInfo', meta_constructor)
 
 with open(path + "/osu/apktool.yml") as f:
-     filechange = yaml.load(f, Loader=yaml.FullLoader)
+     filechange = yaml.load(f)
 
 filechange["versionInfo"]["versionName"] = version
 
