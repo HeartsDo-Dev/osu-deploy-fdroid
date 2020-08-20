@@ -62,7 +62,7 @@ jobs:
     - name: Deploy app
       run: |
            mkdir "deploy/unsigned/"
-           mv "osu/dist/osu.apk" "deploy/unsigned/sh.ppy.osulazer.apk"
+           mv "osu/dist/sh.ppy.osulazer.apk" "deploy/unsigned/sh.ppy.osulazer.apk"
            cd deploy && fdroid publish --verbose && fdroid update --verbose && fdroid server update --verbose
         
         
