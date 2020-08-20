@@ -50,7 +50,7 @@ jobs:
            ./apktool.jar d sh.ppy.osulazer.apk -o "osu/"
            python3 amhack.py
            ./apktool.jar build "osu/"
-           ls
+           ls "osu/dist"
            
     - name: Prepare deploy
       uses: actions/checkout@v2
