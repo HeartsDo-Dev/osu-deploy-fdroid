@@ -39,7 +39,7 @@ jobs:
       run: |
            sudo apt-get install openjdk-8-jdk-headless
            sudo apt-get install apktool fdroidserver
-           update-java-alternatives -s java-1.8.0-openjdk-amd64
+           sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
         
     - name: Repackage osu!laser for change the version name
       env:
