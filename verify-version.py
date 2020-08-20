@@ -1,7 +1,7 @@
-import config
+import version
 import os, sys
 
-lv = config.lastversion
+lv = version.lastversion
 
 if os.getenv("lv") != lv:
     config.lastversion = os.getenv("lv")
