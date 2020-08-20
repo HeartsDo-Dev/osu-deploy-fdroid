@@ -36,7 +36,7 @@ jobs:
       run: wget https://github.com/ppy/osu/releases/download/${{ steps.nrelease.outputs.release }}/sh.ppy.osulazer.apk
     
     - name: Download package for recompile and deploy
-      run: sudo apt-get install android-apktools fdroidserver
+      run: sudo apt-get install apktool fdroidserver
         
     - name: Repackage osu!laser for change the version name
       env:
