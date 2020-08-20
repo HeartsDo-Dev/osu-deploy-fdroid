@@ -41,7 +41,8 @@ jobs:
            sudo apt-get install apktool fdroidserver
            sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
            wget https://github.com/iBotPeaches/Apktool/releases/download/v2.4.1/apktool_2.4.1.jar -O apktool.jar
-        
+           chmod +x apktool.apk
+ 
     - name: Repackage osu!laser for change the version name
       env:
         lv: ${{ steps.nrelease.outputs.release }}
