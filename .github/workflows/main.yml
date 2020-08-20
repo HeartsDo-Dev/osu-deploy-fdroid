@@ -46,7 +46,7 @@ jobs:
       env:
         lv: ${{ steps.nrelease.outputs.release }}
       run: |
-           java apktool.jar d sh.ppy.osulazer.apk -o "./osu/"
+           ./apktool.jar d sh.ppy.osulazer.apk -o "./osu/"
            python3 amhack.py
-           java apktool.jar build "./osu/"
+           ./apktool.jar build "./osu/"
            ls
