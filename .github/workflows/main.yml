@@ -38,10 +38,8 @@ jobs:
     - name: Download package for recompile and deploy
       run: |
            sudo apt-get install openjdk-8-jdk-headless
-           update-java-alternatives -l
            sudo apt-get install apktool fdroidserver
-           pip install -U wheel
-           pip install -U PyYAML
+           update-java-alternatives -s java-1.8.0-openjdk-amd64
         
     - name: Repackage osu!laser for change the version name
       env:
