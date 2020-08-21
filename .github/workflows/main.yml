@@ -63,7 +63,7 @@ jobs:
            cd deploy && fdroid publish --verbose && fdroid update --verbose && fdroid server update --verbose
     
     - name: Push repo settings and deploy version on Github
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
       with:
         token: ${{ secrets.PAT }}
     - run: |
