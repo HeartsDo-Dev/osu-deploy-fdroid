@@ -60,7 +60,7 @@ jobs:
     - name: Deploy app
       run: |
            mv "osu/dist/sh.ppy.osulazer.apk" "deploy/unsigned/sh.ppy.osulazer_0001.apk"
-           echo "StrictHostKeyChecking no" > "~/.ssh/ssh_config"
+           touch ~/.ssh/ssh_config && echo "StrictHostKeyChecking no" > "~/.ssh/ssh_config"
            cd deploy && fdroid publish --verbose && fdroid update --verbose && fdroid server update --verbose
     
     - name: Push repo settings and deploy version on Github
