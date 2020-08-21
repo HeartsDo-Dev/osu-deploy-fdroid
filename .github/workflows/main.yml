@@ -67,10 +67,11 @@ jobs:
       with:
         token: ${{ secrets.PAT }}
     - run: |
+           rm "deploy/repo/sh.ppy.osulazer_0001.apk"
            git config --global user.name github-actions
            git config --global user.email github-actions@github.com
-           cd deploy/ && git add * && git commit -m "Updating repository" && git push
-           cd ../ && git add config.py && git commit -m "Update version number" && git push
+           cd "deploy/" && git add * && git commit -m "Updating repository" && git push
+           cd "../" && git add config.py && git commit -m "Update version number" && git push
         
         
         
