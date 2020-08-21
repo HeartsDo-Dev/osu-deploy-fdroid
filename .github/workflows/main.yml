@@ -37,9 +37,7 @@ jobs:
     
     - name: Download package for recompile and deploy
       run: |
-           sudo apt-get install openjdk-8-jdk-headless
            sudo apt-get install apktool fdroidserver
-           sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
            wget https://github.com/iBotPeaches/Apktool/releases/download/v2.4.1/apktool_2.4.1.jar -O apktool.jar
            chmod +x apktool.jar
  
@@ -62,7 +60,7 @@ jobs:
     - name: Deploy app
       run: |
            mkdir "deploy/unsigned/"
-           mv "osu/dist/sh.ppy.osulazer.apk" "deploy/unsigned/sh.ppy.osulazer.apk"
+           mv "osu/dist/sh.ppy.osulazer.apk" "deploy/unsigned/sh.ppy.osulazer_0001.apk"
            cd deploy && fdroid publish --verbose && fdroid update --verbose && fdroid server update --verbose
         
         
