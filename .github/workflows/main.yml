@@ -5,8 +5,6 @@ name: Deploy osu!laser
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  schedule:
-  - cron: "0 0 * * *"
   workflow_dispatch:
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -37,18 +35,7 @@ jobs:
     
     - name: Download package for recompile and deploy
       run: |
-           sudo apt-get install apktool fdroidserver ssh rsync
-           wget https://github.com/iBotPeaches/Apktool/releases/download/v2.4.1/apktool_2.4.1.jar -O apktool.jar
-           chmod +x apktool.jar
- 
-    - name: Repackage osu!laser for change the version name
-      env:
-        lv: ${{ steps.nrelease.outputs.release }}
-      run: |
-           ./apktool.jar d sh.ppy.osulazer.apk -o "osu/"
-           python3 amhack.py
-           ./apktool.jar build "osu/"
-           ls "osu/dist"
+           sudo apt-get install fdroidserver ssh rsync
            
     - name: Prepare deploy
       uses: actions/checkout@v2
@@ -59,10 +46,10 @@ jobs:
     
     - name: Deploy app
       run: |
-           mv "osu/dist/sh.ppy.osulazer.apk" "deploy/unsigned/sh.ppy.osulazer_0001.apk"
+           mv "sh.ppy.osulazer.apk" "deploy/repo/sh.ppy.osulazer.apk"
            mkdir ~/.ssh && touch ~/.ssh/ssh_config && echo "StrictHostKeyChecking no" > ~/.ssh/ssh_config
-           cd deploy && fdroid publish --verbose && fdroid update --verbose && fdroid server update --verbose
-           rm repo/sh.ppy.osulazer_0001.apk"
+           cd deploy && fdroid deploy -v
+           rm "sh.ppy.osulazer.apk"
     
     - name: Push repo settings and deploy version on Github
       uses: actions/checkout@v2
@@ -73,6 +60,3 @@ jobs:
            git config --global user.email github-actions@github.com
            cd "deploy/" && git add * && git commit -m "Updating repository" && git push
            cd "../" && git add config.py && git commit -m "Update version number" && git push
-        
-        
-        
