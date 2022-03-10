@@ -17,7 +17,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Get the last release
       id: nrelease
@@ -38,7 +38,7 @@ jobs:
            sudo apt-get install fdroidserver ssh rsync
            
     - name: Prepare deploy
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: "HeartsDo-Dev/keystore-fdroid"
         token: ${{ secrets.PAT }}
@@ -52,7 +52,7 @@ jobs:
            rm "sh.ppy.osulazer.apk"
     
     - name: Push repo settings and deploy version on Github
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         token: ${{ secrets.PAT }}
     - run: |
